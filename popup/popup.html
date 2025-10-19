@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Visa Autofill</title>
+  <style>
+    body { font: 14px/1.4 system-ui, sans-serif; padding: 12px; width: 320px; }
+    .row { display: grid; grid-template-columns: 1fr 2fr; gap: 8px; margin-bottom: 8px; }
+    input, select { width: 100%; padding: 6px; }
+    .btn { margin-top: 8px; width: 100%; padding: 8px; }
+    .muted { color: #666; font-size: 12px; margin-top: 6px; }
+  </style>
+</head>
+<body>
+  <h3>Profile</h3>
+  <div class="row"><label>Full Name</label><input id="fullName" /></div>
+  <div class="row"><label>DOB (YYYY-MM-DD)</label><input id="dob" placeholder="2003-07-12"/></div>
+  <div class="row"><label>Passport #</label><input id="ppNumber" /></div>
+  <div class="row"><label>Issuing Country</label>
+    <input id="ppCountry" placeholder="IN" />
+  </div>
+  <div class="row"><label>Expiry (YYYY-MM-DD)</label><input id="ppExpiry" /></div>
+  <div class="row"><label>Nationality</label><input id="nationality" placeholder="IN"/></div>
+  <div class="row"><label>Email</label><input id="email" /></div>
+  <div class="row"><label>Phone</label><input id="phone" /></div>
+  <div class="row"><label>Address Line 1</label><input id="addr1" /></div>
+  <div class="row"><label>City</label><input id="city" /></div>
+  <div class="row"><label>ZIP</label><input id="zip" /></div>
+  <div class="row"><label>Country</label><input id="country" placeholder="IN"/></div>
+
+  <button id="saveBtn" class="btn">Save Profile</button>
+  <button id="autofillBtn" class="btn">Autofill This Page</button>
+  <div id="status" class="muted"></div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
