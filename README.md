@@ -60,7 +60,7 @@ Click the puzzle icon → pin **Wiza AutoFill**
 ---
 
 ## Project Structure
-
+```
 wiza-autofill-ext/
 ├─ manifest.json              # Chrome extension manifest (MV3)
 ├─ assets/                    # Icon
@@ -69,6 +69,7 @@ wiza-autofill-ext/
 ├─ lib/                       # Shared helpers (mapper, validators, inline UI)
 ├─ background/                # Service worker
 └─ demo/                      # One local test form (testA.html)
+```
 
 ---
 
