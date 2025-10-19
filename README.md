@@ -21,7 +21,7 @@ It securely stores a user’s profile (passport, DOB, contact, address) and fill
 
 ## How It Works
 
-`
+```
 Popup (popup.html)
 ↓   save / autofill trigger
 Background Service Worker
@@ -29,7 +29,7 @@ Background Service Worker
 Content Scripts (mapper + validators + inline UI)
 ↓
 Web Page Forms (detected inputs)
-`
+```
 
 ---
 
