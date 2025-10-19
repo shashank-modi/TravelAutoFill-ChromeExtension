@@ -1,0 +1,138 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Form Test A (deterministic labels)</title>
+  <style>
+    :root { color-scheme: light; font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: radial-gradient(circle at 20% 20%, #f5f7ff 0%, #e7ebff 45%, #dde3ff 100%);
+      color: #1e223a;
+    }
+    .card {
+      width: min(520px, 92vw);
+      background: rgba(255,255,255,0.95);
+      border-radius: 20px;
+      padding: 28px 32px;
+      box-shadow: 0 30px 60px rgba(48,72,140,0.18);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(88, 110, 190, 0.12);
+    }
+    h2 {
+      margin: 0 0 12px;
+      font-size: 24px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+    }
+    p.lede {
+      margin: 0 0 22px;
+      color: #5a637f;
+      font-size: 14px;
+    }
+    form {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 18px 20px;
+    }
+    .span-full { grid-column: 1 / -1; }
+    label {
+      display: block;
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: #4d5570;
+      margin-bottom: 6px;
+    }
+    input, button {
+      width: 100%;
+      box-sizing: border-box;
+      border-radius: 12px;
+      border: 1px solid rgba(44,54,125,0.16);
+      padding: 12px 14px;
+      font-size: 14px;
+      background: rgba(255,255,255,0.95);
+      color: #1e223a;
+      transition: border-color 0.18s ease, box-shadow 0.18s ease;
+    }
+    input:focus {
+      outline: none;
+      border-color: rgba(74,102,255,0.7);
+      box-shadow: 0 0 0 4px rgba(74,102,255,0.16);
+    }
+    button {
+      margin-top: 12px;
+      grid-column: 1 / -1;
+      border: none;
+      font-weight: 600;
+      letter-spacing: 0.01em;
+      cursor: pointer;
+      background: linear-gradient(135deg, #445dff, #6b7dff);
+      color: #fff;
+      box-shadow: 0 18px 35px rgba(69,93,255,0.25);
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+    button:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 22px 38px rgba(69,93,255,0.28);
+    }
+    button:active {
+      transform: translateY(1px);
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h2>Visa Application — Test A</h2>
+    <p class="lede">A compact playground to confirm the Wiza Autofill heuristics across common travel fields.</p>
+    <form>
+      <div class="span-full">
+        <label for="ppno">Passport Number</label>
+        <input id="ppno" autocomplete="off">
+      </div>
+      <div>
+        <label for="dob">Date of Birth</label>
+        <input id="dob" type="date">
+      </div>
+      <div>
+        <label for="given">Given Name</label>
+        <input id="given" autocomplete="off">
+      </div>
+      <div>
+        <label for="surname">Surname</label>
+        <input id="surname" autocomplete="off">
+      </div>
+      <div>
+        <label for="mail">Email</label>
+        <input id="mail" type="email" autocomplete="off">
+      </div>
+      <div>
+        <label for="tel">Phone</label>
+        <input id="tel" type="tel" autocomplete="off">
+      </div>
+      <div class="span-full">
+        <label for="addr1">Address Line 1</label>
+        <input id="addr1" autocomplete="off">
+      </div>
+      <div>
+        <label for="city">City</label>
+        <input id="city" autocomplete="off">
+      </div>
+      <div>
+        <label for="zip">ZIP</label>
+        <input id="zip" autocomplete="off">
+      </div>
+      <div>
+        <label for="country">Country</label>
+        <input id="country" autocomplete="off">
+      </div>
+      <button type="submit">Submit Application</button>
+    </form>
+  </div>
+</body>
+</html>

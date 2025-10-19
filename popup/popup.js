@@ -1,4 +1,9 @@
 const $ = id => document.getElementById(id);
+const views = {
+  home: $("homeView"),
+  editor: $("editorView")
+};
+const statusEl = $("status");
 
 function readForm() {
   return {
@@ -35,21 +40,61 @@ function fillForm(profile) {
 
 async function loadProfile() {
   const { profile } = await chrome.storage.local.get("profile");
-  if (profile) fillForm(profile);
+  fillForm(profile || {});
+  return profile || null;
+}
+
+function setStatus(msg, persist = false) {
+  statusEl.textContent = msg || "";
+  if (msg && !persist) {
+    setTimeout(() => {
+      if (statusEl.textContent === msg) statusEl.textContent = "";
+    }, 2200);
+  }
+}
+
+function showView(name) {
+  Object.entries(views).forEach(([key, el]) => {
+    if (!el) return;
+    el.classList.toggle("active", key === name);
+  });
 }
 
 $("saveBtn").addEventListener("click", async () => {
   const profile = readForm();
   await chrome.storage.local.set({ profile });
-  $("status").textContent = "✅ Profile saved.";
-  setTimeout(() => ($("status").textContent = ""), 1500);
+  setStatus("Profile saved");
+  showView("home");
 });
 
 $("autofillBtn").addEventListener("click", async () => {
   const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
-  if (!tab?.id) return;
-  $("status").textContent = "Running autofill…";
-  await chrome.tabs.sendMessage(tab.id, { type: "AUTOFILL_NOW" });
+  if (!tab?.id) {
+    setStatus("No active tab detected.");
+    return;
+  }
+  setStatus("Running autofill…", true);
+  try {
+    const stats = await chrome.tabs.sendMessage(tab.id, { type: "AUTOFILL_NOW" });
+    if (stats && typeof stats.filled === "number") {
+      setStatus(`Filled ${stats.filled}/${stats.total} · review ${stats.invalid}`);
+    } else {
+      setStatus("Autofill trigger sent.");
+    }
+  } catch (err) {
+    console.error("Autofill failed:", err);
+    setStatus("This page cannot be autofilled right now.");
+  }
+});
+
+$("editBtn").addEventListener("click", async () => {
+  await loadProfile();
+  showView("editor");
+  setStatus("");
+});
+
+$("backBtn").addEventListener("click", () => {
+  showView("home");
 });
 
 loadProfile();
