@@ -21,13 +21,13 @@ It securely stores a user’s profile (passport, DOB, contact, address) and fill
 
 ## How It Works
 
-Popup (popup.html)
+```Popup (popup.html)
 ↓   save / autofill trigger
 Background Service Worker
 ↓
 Content Scripts (mapper + validators + inline UI)
 ↓
-Web Page Forms (detected inputs)
+Web Page Forms (detected inputs)```
 
 ---
 
@@ -50,7 +50,7 @@ Click the puzzle icon → pin **Wiza AutoFill**
 - Fill details → **Save Profile**
 
 5. **Test it**
-- Open `/demo/testA.html` or `/demo/testB.html` (included in repo)  
+- Open `/demo/testA.html` (included in repo)  
 - Click the extension → **Autofill This Page**  
 - Watch fields fill with blue/red outlines and a toast summary  
 - Focus individual inputs (e.g., Passport No.) to try inline suggestions
