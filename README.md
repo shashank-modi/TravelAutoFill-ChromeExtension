@@ -5,7 +5,7 @@ It securely stores a user’s profile (passport, DOB, contact, address) and fill
 
 ---
 
-Features
+## Features
 
 | Capability | Description |
 |-------------|--------------|
